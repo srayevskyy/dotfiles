@@ -12,5 +12,5 @@ Applies my preferred environment to a workstation.
 
 ## Running
 
-    cd ansible
-    ansible-playbook -i inventory --ask-become-pass site.yml
+    $ cd ansible
+    $ ansible-playbook -i inventory --ask-become-pass site.yml
