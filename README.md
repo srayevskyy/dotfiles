@@ -12,5 +12,6 @@ Applies my preferred environment to a workstation.
 
 ## Running
 
-    $ cd ansible
+    $ git clone https://github.com/nharward/dotfiles.git
+    $ cd dotfiles/ansible
     $ ansible-playbook -i inventory --ask-become-pass site.yml
