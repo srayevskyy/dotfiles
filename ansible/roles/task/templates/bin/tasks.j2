@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+if test -x "$(which task 2>/dev/null)"; then
+    for _filter in '+hot' 'due < eow' 'overdue' 'priority != L' 'blocked' 'next';
+    do
+        task "${_filter}" >/dev/null 2>&1 && task "${_filter}" && break
+    done
+    unset _filter
+fi

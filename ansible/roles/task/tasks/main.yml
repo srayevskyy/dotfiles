@@ -1,0 +1,18 @@
+---
+- name: Task package
+  package:
+    name: task
+    state: present
+  become: '{{ use_become  }}'
+
+- name: Task configuration
+  template:
+    src: taskrc.j2
+    dest: '{{ home }}/.taskrc'
+    mode: 0400
+
+- name: Task ~/bin wrapper
+  template:
+    src: bin/tasks.j2
+    dest: '{{ home }}/bin/tasks'
+    mode: 0500

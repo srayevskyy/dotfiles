@@ -1,0 +1,7 @@
+---
+- name: Ensure powerline is installed
+  pip:
+    name: powerline-status
+    state: latest
+    executable: pip3
+    extra_args: '--user'

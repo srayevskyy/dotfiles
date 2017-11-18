@@ -1,0 +1,4 @@
+---
+ansible_pkg_mgr: brew
+use_become: false
+python3: python3

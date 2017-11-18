@@ -1,0 +1,21 @@
+---
+- name: htop package
+  package:
+    name: htop
+    state: present
+  become: '{{ use_become  }}'
+
+- name: htop directory structure
+  file:
+    path: '{{ item }}'
+    state: directory
+    recurse: true
+    mode: 0700
+  with_items:
+    - '{{ home }}/.config/htop'
+
+- name: htop configuration
+  template:
+    src: htoprc.j2
+    dest: '{{ home }}/.config/htop/htoprc'
+    mode: 0400

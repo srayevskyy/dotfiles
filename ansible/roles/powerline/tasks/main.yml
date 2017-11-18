@@ -1,0 +1,23 @@
+---
+- include_tasks: '{{ ansible_system | lower }}.yml'
+
+- name: Powerline directory structure
+  file:
+    path: '{{ item }}'
+    state: directory
+    recurse: true
+    mode: 0700
+  with_items:
+    - '{{ home }}/.config/powerline/themes/tmux'
+    - '{{ home }}/.config/powerline/themes/shell'
+
+- name: Powerline configuration
+  template:
+    src: '{{ item }}'
+    dest: '{{ home }}/.config/powerline/{{ item }}'
+    mode: 0400
+  with_items:
+    - config.json
+    - themes/shell/default.json
+    - themes/shell/__main__.json
+    - themes/tmux/default.json

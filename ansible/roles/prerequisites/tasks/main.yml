@@ -1,0 +1,29 @@
+---
+- name: Check the status of home
+  stat:
+    path: '{{ home }}'
+  register: homestat
+
+- name: Print $HOME
+  debug:
+    msg: $HOME is '{{ home }}'
+    verbosity: 1
+
+- name: Ensure home ($HOME) exists and is a writeable directory
+  assert:
+    that:
+      - homestat.stat.exists
+      - homestat.stat.isdir
+      - homestat.stat.writeable
+
+- name: Basic directory structure
+  file:
+    path: '{{ item }}'
+    state: directory
+    recurse: true
+    mode: 0700
+  with_items:
+    - '{{ home }}/Applications'
+    - '{{ home }}/Downloads'
+    - '{{ home }}/Documents'
+    - '{{ home }}/bin'

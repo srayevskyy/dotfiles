@@ -1,0 +1,4 @@
+---
+ansible_pkg_mgr: pacman
+use_become: true
+python3: python

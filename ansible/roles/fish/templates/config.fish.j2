@@ -1,0 +1,68 @@
+fish_vi_key_bindings
+
+# Locale
+for var in LC_ALL LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION
+    set -gx $var en_US.UTF-8
+end
+
+# Pager
+set -gx LESS '-FRX'
+set -gx PAGER less
+set -gx EDITOR vim
+set -gx VISUAL $EDITOR
+
+{% if ansible_system == 'Linux' %}
+#set -gx XKB_DEFAULT_MODEL kinesis
+set -gx XKB_DEFAULT_LAYOUT us,us
+set -gx XKB_DEFAULT_VARIANT ,rus
+set -gx XKB_DEFAULT_OPTIONS grp:toggle,grp:shifts_toggle,grp_led:scroll,compose:menu,caps:ctrl_modifier
+{% endif -%}
+
+set -gx GOPATH $HOME/src/go
+if not test -x $GOPATH/src
+    mkdir -p $GOPATH/src $GOPATH/bin
+end
+if test -x $GOPATH/bin
+    if not contains $GOPATH/bin $PATH
+        set -gx PATH $PATH $GOPATH/bin
+    end
+end
+
+if test -d $HOME/src
+    for cdp in (find -L $HOME/src -mindepth 1 -maxdepth 1 -type d)
+        if not contains $cdp $CDPATH
+            set -gx CDPATH $cdp $CDPATH
+        end
+    end
+end
+
+if not contains . $CDPATH
+    set -gx CDPATH . $CDPATH
+end
+
+if test -d $HOME/Applications
+    for appdir in (find -L $HOME/Applications -mindepth 2 -maxdepth 2 -type d -name bin | sort -r)
+        if not contains $appdir $PATH
+            set -gx PATH $appdir $PATH
+        end
+    end
+end
+for bindir in /opt/local/bin /usr/local/sbin /usr/local/bin ('{{python3}}' -c 'import sysconfig; print(sysconfig.get_config_var("userbase"));')/bin $HOME/.cargo/bin $HOME/bin
+    if test -d $bindir
+        if not contains $bindir $PATH
+            set -gx PATH $bindir $PATH
+        end
+    end
+end
+
+if test -x $HOME/bin/tasks
+    eval /bin/sh -c $HOME/bin/tasks
+end
+
+set -g fish_prompt_pwd_dir_length 0
+
+set POWERLINE_ROOT ('{{python3}}' -c 'import powerline; print(powerline.config.POWERLINE_ROOT)')/powerline
+if test -d $POWERLINE_ROOT/bindings/fish
+    set fish_function_path $fish_function_path $POWERLINE_ROOT/bindings/fish
+    powerline-setup
+end

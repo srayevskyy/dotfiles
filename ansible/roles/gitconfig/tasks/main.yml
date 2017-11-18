@@ -1,0 +1,24 @@
+---
+- name: ~/.gitconfig
+  git_config:
+    name: '{{ item.section }}.{{ item.option }}'
+    value: '{{ item.value }}'
+    scope: global
+  when: item.value
+  with_items:
+    - { section: 'alias',     option: 'ci',            value: 'commit' }
+    - { section: 'alias',     option: 'co',            value: 'checkout' }
+    - { section: 'alias',     option: 'info',          value: 'remote -v show' }
+    - { section: 'alias',     option: 'lg',            value: 'log --format=color-log --graph' }
+    - { section: 'alias',     option: 'slg',           value: 'log --format="%Cred%H%Creset - %ad - %Cred%<|(90)%an%Creset - %s" --date=local --date=format:%Y-%m-%d:%H:%M'}
+    - { section: 'alias',     option: 'st',            value: 'status -sbuall' }
+    - { section: 'color',     option: 'status',        value: 'auto' }
+    - { section: 'color',     option: 'ui',            value: 'auto' }
+    - { section: 'core',      option: 'autocrlf',      value: 'input' }
+    - { section: 'core',      option: 'compression',   value: '9' }
+    - { section: 'merge',     option: 'conflictstyle', value: 'diff3' }
+    - { section: 'merge',     option: 'tool',          value: 'vimdiff' }
+    - { section: 'mergetool', option: 'keepBackup',    value: 'false' }
+    - { section: 'pretty',    option: 'color-log',     value: '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' }
+    - { section: 'push',      option: 'default',       value: 'simple' }
+    - { section: 'user',      option: 'name',          value: '{{ ansible_user_gecos | regex_replace("^([^,]*).*$", "\1") }}' }

@@ -1,0 +1,6 @@
+---
+- name: ~/.inputrc
+  template:
+    src: inputrc
+    dest: '{{ home }}/.inputrc'
+    mode: 0400

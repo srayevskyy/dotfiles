@@ -1,0 +1,20 @@
+{
+   "segment_data" : {
+      "branch" : {
+         "args" : {
+            "status_colors" : true
+         }
+      },
+      "hostname" : {
+         "args" : {
+            "only_if_ssh" : true
+         }
+      },
+      "cwd" : {
+         "args" : {
+            "dir_limit_depth" : 0,
+            "use_path_separator" : true
+         }
+      }
+   }
+}

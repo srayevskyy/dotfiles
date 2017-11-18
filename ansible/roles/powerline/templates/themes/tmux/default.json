@@ -1,0 +1,43 @@
+{
+   "segments" : {
+      "right" : [
+         {
+            "function" : "powerline.segments.common.bat.battery",
+            "args" : {
+{% if ansible_system == 'Linux' %}
+               "offline" : "🔋",
+               "online" : "🔌",
+{% else %}
+               "offline" : "🔋 ",
+               "online" : "🔌 ",
+{% endif %}
+               "format" : "{ac_state}{capacity:3.0%}",
+               "gamify" : false
+            }
+         },
+{% if ansible_system != 'Darwin' %}
+         {
+            "function" : "powerline.segments.common.net.network_load",
+            "priority" : 50,
+            "args" : {
+               "interval" : 3
+            }
+         },
+{% endif %}
+         {
+            "function" : "powerline.segments.common.time.date"
+         },
+         {
+            "function" : "powerline.segments.common.time.date",
+            "name" : "time",
+            "args" : {
+               "format" : "%H:%M",
+               "istime" : true
+            }
+         },
+         {
+            "function" : "powerline.segments.common.env.user"
+         }
+      ]
+   }
+}

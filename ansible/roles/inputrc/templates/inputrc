@@ -1,0 +1,5 @@
+set blink-matching-paren on
+set completion-ignore-case on
+set editing-mode vi
+set keymap vi-insert
+tab: complete

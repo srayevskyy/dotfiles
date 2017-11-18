@@ -1,0 +1,15 @@
+---
+- name: Nat's Sensible Dot-file Setup
+  hosts: all
+  pre_tasks:
+    - group_by: key={{ ansible_system | lower }}
+  roles:
+    - prerequisites
+    - python3
+    - powerline
+    - fish
+    - tmux
+    - inputrc
+    - htop
+    - task
+    - gitconfig

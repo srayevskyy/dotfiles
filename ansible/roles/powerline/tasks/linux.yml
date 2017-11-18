@@ -1,0 +1,6 @@
+---
+- name: Ensure powerline is installed
+  package:
+    name: powerline
+    state: latest
+  become: '{{ use_become  }}'

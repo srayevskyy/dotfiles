@@ -1,0 +1,43 @@
+---
+- name: Fish package
+  package:
+    name: fish
+    state: present
+  become: '{{ use_become }}'
+
+- name: Fish directory structure
+  file:
+    path: '{{ item }}'
+    state: directory
+    recurse: true
+    mode: 0700
+  with_items:
+    - '{{ home }}/.config/fish/functions'
+
+- name: Fish configuration
+  template:
+    src: config.fish.j2
+    dest: '{{ home }}/.config/fish/config.fish'
+    mode: 0400
+
+- name: Fish functions
+  template:
+    src: 'functions/{{ item }}'
+    dest: '{{ home }}/.config/fish/functions/{{ item }}'
+    mode: 0400
+  with_items:
+    - after.fish
+    - battery.fish
+    - before.fish
+    - c.fish
+    - cheat.fish
+    - d.fish
+    - dr.fish
+    - fish_greeting.fish
+    - fish_mode_prompt.fish
+    - is-laptop-closed.fish
+    - is-laptop-open.fish
+    - ta.fish
+    - ts.fish
+    - vi.fish
+    - wifi.fish
