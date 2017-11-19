@@ -1,0 +1,14 @@
+---
+- name: ~/bin/web
+  when: ansible_system == "Linux"
+  template:
+    src: web
+    dest: '{{ home }}/bin/web'
+    mode: 0500
+
+- name: ~/bin/private-web
+  when: ansible_system == "Linux"
+  file:
+    src: '{{ home }}/bin/web'
+    dest: '{{ home }}/bin/private-web'
+    state: link

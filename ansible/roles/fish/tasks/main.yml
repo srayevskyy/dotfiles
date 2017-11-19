@@ -37,6 +37,7 @@
     - fish_mode_prompt.fish
     - is-laptop-closed.fish
     - is-laptop-open.fish
+    - mic.fish
     - ta.fish
     - ts.fish
     - vi.fish

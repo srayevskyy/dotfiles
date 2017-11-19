@@ -1,0 +1,34 @@
+#! /usr/bin/env fish
+# :vim: ft=fish:
+
+set -l program (basename (status current-filename))
+
+# If we are invoked as "private-web" then set some sensible defaults
+if test "$program" = "private-web"
+    set -gx FIREFOX_ARGS -private
+    set -gx CHROME_ARGS \
+        --disable-background-networking \
+        --disable-cloud-import \
+        --disable-component-cloud-policy \
+        --disable-dinosaur-easter-egg \
+        --disable-sync \
+        --incognito \
+        --make-chrome-default \
+        --no-pings \
+        --no-wifi
+end
+
+for conf_home in $XDG_CONFIG_HOME $XDG_CONFIG_DIRS $HOME/.config
+    if test -r $conf_home/$program/config
+        source $conf_home/$program/config
+        break
+    end
+end
+
+if test -n "$USE_CHROMIUM"
+    exec chromium $CHROME_ARGS $argv
+else if test -n "$USE_CHROME"
+    exec google-chrome-stable $CHROME_ARGS $argv
+else
+    exec firefox $FIREFOX_ARGS $argv
+end

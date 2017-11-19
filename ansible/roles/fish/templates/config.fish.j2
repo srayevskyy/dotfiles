@@ -1,3 +1,7 @@
+if not status is-login
+    exit
+end
+
 fish_vi_key_bindings
 
 # Locale
@@ -12,10 +16,17 @@ set -gx EDITOR vim
 set -gx VISUAL $EDITOR
 
 {% if ansible_system == 'Linux' %}
+set -gx BROWSER web
 #set -gx XKB_DEFAULT_MODEL kinesis
 set -gx XKB_DEFAULT_LAYOUT us,us
 set -gx XKB_DEFAULT_VARIANT ,rus
-set -gx XKB_DEFAULT_OPTIONS grp:toggle,grp:shifts_toggle,grp_led:scroll,compose:menu,caps:ctrl_modifier
+set -gx XKB_DEFAULT_OPTIONS grp:menu_toggle,caps:ctrl_modifier
+
+# See https://wiki.archlinux.org/index.php/Wayland#GUI_libraries
+set -gx GDK_BACKEND wayland
+set -gx QT_QPA_PLATFORM wayland-egl
+set -gx CLUTTER_BACKEND wayland
+set -gx SDL_VIDEODRIVER wayland
 {% endif -%}
 
 set -gx GOPATH $HOME/src/go
