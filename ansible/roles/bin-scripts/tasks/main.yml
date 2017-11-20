@@ -12,3 +12,13 @@
     src: '{{ home }}/bin/web'
     dest: '{{ home }}/bin/private-web'
     state: link
+
+- name: Laptop lid checks
+  when: ansible_system == "Linux"
+  template:
+    src: '{{ item }}'
+    dest: '{{ home }}/bin/{{ item }}'
+    mode: 500
+  with_items:
+    - is-laptop-closed
+    - is-laptop-open

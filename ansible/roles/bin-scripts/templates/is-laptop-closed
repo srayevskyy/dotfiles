@@ -1,0 +1,4 @@
+#! /usr/bin/env fish
+# :vim: ft=fish
+
+not is-laptop-open
