@@ -36,6 +36,7 @@
     - fish_greeting.fish
     - fish_mode_prompt.fish
     - mic.fish
+    - sway.fish
     - ta.fish
     - ts.fish
     - vi.fish
