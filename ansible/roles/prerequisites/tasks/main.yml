@@ -20,7 +20,6 @@
   file:
     path: '{{ item }}'
     state: directory
-    recurse: false
     mode: 0700
   with_items:
     - '{{ home }}/Applications'

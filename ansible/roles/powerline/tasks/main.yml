@@ -5,7 +5,6 @@
   file:
     path: '{{ item }}'
     state: directory
-    recurse: true
     mode: 0700
   with_items:
     - '{{ home }}/.config/powerline/themes/tmux'
