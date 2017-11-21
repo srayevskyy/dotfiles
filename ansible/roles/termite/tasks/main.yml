@@ -1,0 +1,24 @@
+---
+- name: Termite package
+  package:
+    name: termite
+    state: present
+  become: '{{ use_become }}'
+
+- name: Termite directory structure
+  file:
+    path: '{{ home }}/.config/termite'
+    state: directory
+    mode: 0700
+
+- name: Termite color scheme
+  uri:
+    url: https://raw.githubusercontent.com/khamer/base16-termite/master/themes/base16-solarized-dark.config
+    return_content: yes
+  register: termite_colors
+
+- name: Termite configuration
+  template:
+    src: config.j2
+    dest: '{{ home }}/.config/termite/config'
+    mode: 0400

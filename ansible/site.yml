@@ -9,6 +9,7 @@
     - powerline
     - fish
     - sway
+    - termite
     - tmux
     - inputrc
     - htop
