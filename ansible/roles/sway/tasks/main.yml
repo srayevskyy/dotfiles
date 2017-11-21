@@ -24,6 +24,7 @@
     mode: 0400
   with_items:
     - config
-    - config.d/displays.conf
+    - config.d/inputs.conf
     - config.d/mouse.conf
+    - config.d/outputs.conf
     - config.d/site.conf
