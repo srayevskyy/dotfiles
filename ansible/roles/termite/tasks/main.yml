@@ -1,23 +1,27 @@
 ---
 - name: Termite package
+  when: ansible_system == "Linux"
   package:
     name: termite
     state: present
   become: '{{ use_become }}'
 
 - name: Termite directory structure
+  when: ansible_system == "Linux"
   file:
     path: '{{ home }}/.config/termite'
     state: directory
     mode: 0700
 
 - name: Termite color scheme
+  when: ansible_system == "Linux"
   uri:
     url: https://raw.githubusercontent.com/khamer/base16-termite/master/themes/base16-solarized-dark.config
     return_content: yes
   register: termite_colors
 
 - name: Termite configuration
+  when: ansible_system == "Linux"
   template:
     src: config.j2
     dest: '{{ home }}/.config/termite/config'
