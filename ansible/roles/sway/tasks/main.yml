@@ -25,6 +25,7 @@
   with_items:
     - config
     - config.d/inputs.conf
+    - config.d/keybindings.conf
     - config.d/mouse.conf
     - config.d/outputs.conf
     - config.d/site.conf
