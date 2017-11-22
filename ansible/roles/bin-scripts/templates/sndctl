@@ -1,0 +1,24 @@
+#! /usr/bin/env fish
+# :vim: ft=fish
+
+function __pa_device
+    for state in RUNNING IDLE SUSPENDED
+        set --local device (pactl list sinks | grep -B 1 $state | sed 's/[^0-9]\+//g ; 1q')
+        if test -n "$device"
+            echo $device
+            break
+        end
+    end
+end
+
+switch "$argv[1]"
+case up
+    pactl set-sink-volume (__pa_device) +5%
+case down
+    pactl set-sink-volume (__pa_device) -5%
+case mute
+    pactl set-sink-mute (__pa_device) toggle
+case '*'
+    echo 'Usage: '(status current-filename)' <up|down|mute>'
+    false
+end
