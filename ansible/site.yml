@@ -13,6 +13,7 @@
     - tmux
     - inputrc
     - htop
+    - vis
     - task
     - gitconfig
     - bin-scripts

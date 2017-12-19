@@ -1,0 +1,25 @@
+---
+- name: Vis package
+  when: ansible_system == "Linux"
+  package:
+    name: vis
+    state: present
+  become: '{{ use_become }}'
+
+- name: vis directory structure
+  when: ansible_system == "Linux"
+  file:
+    path: '{{ item }}'
+    state: directory
+    mode: 0700
+  with_items:
+    - '{{ home }}/.config/vis'
+
+- name: vis configuration
+  when: ansible_system == "Linux"
+  template:
+    src: '{{ item }}.j2'
+    dest: '{{ home }}/.config/vis/{{ item }}'
+    mode: 0400
+  with_items:
+    - visrc.lua
