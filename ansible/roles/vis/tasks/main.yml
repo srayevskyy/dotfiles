@@ -18,7 +18,7 @@
 - name: vis configuration
   when: ansible_system == "Linux"
   template:
-    src: '{{ item }}.j2'
+    src: '{{ item }}'
     dest: '{{ home }}/.config/vis/{{ item }}'
     mode: 0400
   with_items:
