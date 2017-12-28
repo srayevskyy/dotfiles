@@ -26,7 +26,7 @@ Applies my preferred environment to a workstation.
 echo -e "\n" | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap caskroom/versions && brew install git ansible
 git clone https://github.com/srayevskyy/dotfiles.git
-cd dotfiles/ansible && ansible-playbook -i inventory --ask-become-pass site.yml
+cd dotfiles/ansible && ansible-playbook -i inventory site.yml
 ```
 
 ## Running (Linux)
