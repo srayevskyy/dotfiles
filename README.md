@@ -23,6 +23,8 @@ ansible-playbook -i inventory --ask-become-pass site.yml
 
 ## Running (Linux)
 
-   $ git clone https://github.com/nharward/dotfiles.git
-   $ cd dotfiles/ansible
-   $ ansible-playbook -i inventory --ask-become-pass site.yml
+```
+git clone https://github.com/nharward/dotfiles.git
+cd dotfiles/ansible
+ansible-playbook -i inventory --ask-become-pass site.yml
+```
