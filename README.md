@@ -15,14 +15,14 @@ Applies my preferred environment to a workstation.
 ```
 echo -e "\n" | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap caskroom/versions && brew install git ansible
-mkdir -p ~/src/ && rm -rfv ~/src/dotfiles/ && cd ~/src/ && git clone https://github.com/srayevskyy/dotfiles.git
-cd ~/src/dotfiles/ansible && ansible-playbook -i inventory --ask-become-pass site.yml
+git clone https://github.com/srayevskyy/dotfiles.git
+cd dotfiles/ansible && ansible-playbook -i inventory --ask-become-pass site.yml
 ```
 
 ## Running (Linux)
 
 ```
-git clone https://github.com/nharward/dotfiles.git
+git clone https://github.com/srayevskyy/dotfiles.git
 cd dotfiles/ansible
 ansible-playbook -i inventory --ask-become-pass site.yml
 ```
