@@ -10,6 +10,14 @@ Applies my preferred environment to a workstation.
     - Should be easily forked & ported to other Linux distributions by just tweaking package names
 - [Ansible](https://www.ansible.com/) >= 2.4.0.0
 
+## Pre-requisites (OSX)
+- reboot in recovery mode
+- start terminal (Utilities/Terminal)
+- issue the following commands:
+`sudo spctl --master-disable`
+`sudo spctl kext-consent disable`
+- reboot in normal mode
+
 ## Running (OSX, including installation of brew and ansible)
 
 ```
