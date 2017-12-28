@@ -1,0 +1,27 @@
+- name: brew casks to install
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - iterm2
+    - firefox
+    - slack
+    - avira-antivirus
+    - java8
+    - sublime-text
+    - vagrant
+    - virtualbox
+    - intellij-idea
+
+- name: packages to install
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mc
+    - git
+    - docker
+    - docker-compose
+    - docker-machine
+    - xhyve
+    - docker-machine-driver-xhyve
