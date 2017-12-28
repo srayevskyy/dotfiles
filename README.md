@@ -17,6 +17,8 @@ Applies my preferred environment to a workstation.
 `sudo spctl --master-disable`
 `sudo spctl kext-consent disable`
 - reboot in normal mode
+- run the command `sudo vusudo` 
+- replace the line `%admin          ALL = (ALL) ALL` with `%admin          ALL = (ALL) NOPASSWD: ALL`
 
 ## Running (OSX, including installation of brew and ansible)
 
