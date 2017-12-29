@@ -1,0 +1,16 @@
+- name: adding icons to dock
+  include_role:
+    name: dock-icon.osx
+  with_items:
+    - 'iTerm.app'
+    - 'Firefox.app'
+    - 'Slack.app'
+    - 'VirtualBox.app'
+    - 'Sublime Text.app'
+    - 'IntelliJ IDEA.app'
+    - 'Google Chrome.app'
+  loop_control:
+    loop_var: app_name
+
+- name: restart dock
+  shell: killall Dock

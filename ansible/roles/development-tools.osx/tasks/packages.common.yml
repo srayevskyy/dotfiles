@@ -1,0 +1,10 @@
+- name: packages to install
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mc
+    - wget
+    - docker
+    - docker-compose
+    - docker-machine

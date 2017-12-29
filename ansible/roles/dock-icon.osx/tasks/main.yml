@@ -1,0 +1,13 @@
+- name: repacing spaces with %20 in app name
+  command: bash -c "echo '{{ app_name }}' | sed 's/ /%20/g'"
+  register: app_name_command_output
+
+- name: reading osx dock config (RED lines are OK)
+  command: bash -c "defaults read com.apple.dock persistent-apps | grep '\"_CFURLString\" = \"file:///Applications/{{ app_name_command_output.stdout }}/\"'"
+  register: dock_config_read
+  ignore_errors: yes
+
+- name: adding icons to dock
+  shell: defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/{{ app_name }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+  when: dock_config_read is defined and dock_config_read.failed
+
