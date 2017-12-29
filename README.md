@@ -17,6 +17,8 @@ Applies my preferred environment to a workstation.
 `sudo spctl --master-disable`
 `sudo spctl kext-consent disable`
 - reboot in normal mode
+- run the command `sudo vusudo` 
+- replace the line `%admin          ALL = (ALL) ALL` with `%admin          ALL = (ALL) NOPASSWD: ALL`
 
 ## Running (OSX, including installation of brew and ansible)
 
@@ -24,7 +26,7 @@ Applies my preferred environment to a workstation.
 echo -e "\n" | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap caskroom/versions && brew install git ansible
 git clone https://github.com/srayevskyy/dotfiles.git
-cd dotfiles/ansible && ansible-playbook -i inventory --ask-become-pass site.yml
+cd dotfiles/ansible && ansible-playbook -i inventory site.yml
 ```
 
 ## Running (Linux)
