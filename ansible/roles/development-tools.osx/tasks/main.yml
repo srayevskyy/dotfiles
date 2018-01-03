@@ -1,11 +1,11 @@
-#- include_tasks: packages.common.yml
-#  when: ansible_system == 'Darwin'
+- include_tasks: packages.common.yml
+  when: ansible_system == 'Darwin'
 
-#- include_tasks: packages.osx.yml
-#  when: ansible_system == 'Darwin'
+- include_tasks: packages.osx.yml
+  when: ansible_system == 'Darwin'
 
-#- include_tasks: brew-casks.osx.yml
-#  when: ansible_system == 'Darwin'
+- include_tasks: brew-casks.osx.yml
+  when: ansible_system == 'Darwin'
 
 - include_tasks: dock-icons.osx.yml
   when: ansible_system == 'Darwin'
