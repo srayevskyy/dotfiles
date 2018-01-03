@@ -10,6 +10,7 @@
     - 'IntelliJ IDEA.app'
     - 'Google Chrome.app'
     - 'RazorSQL.app'
+    - 'Authy Desktop.app'
   loop_control:
     loop_var: app_name
 
