@@ -4,7 +4,10 @@
     state: present
   with_items:
     - iterm2
+    - flux
     - firefox
+    - google-chrome
+    - tunnelblick
     - slack
     - avira-antivirus
     - java8
@@ -12,7 +15,5 @@
     - vagrant
     - virtualbox
     - intellij-idea
-    - tunnelblick
-    - flux
-    - google-chrome
+    - razorsql
   when: ansible_system == 'Darwin'

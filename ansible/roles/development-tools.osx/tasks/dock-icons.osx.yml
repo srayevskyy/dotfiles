@@ -9,6 +9,7 @@
     - 'Sublime Text.app'
     - 'IntelliJ IDEA.app'
     - 'Google Chrome.app'
+    - 'RazorSQL.app'
   loop_control:
     loop_var: app_name
 
