@@ -4,18 +4,18 @@
   pre_tasks:
     - group_by: key={{ ansible_system | lower }}
   roles:
-    # - prerequisites
-    # - python3
-    # - powerline
-    # - fish
-    # - sway
-    # - termite
-    # - tmux
-    # - inputrc
-    # - htop
-    # - vis
-    # - task
-    # - gitconfig
-    # - bin-scripts.linux
+    - prerequisites
+    - python3
+    - powerline
+    - fish
+    - sway
+    - termite
+    - tmux
+    - inputrc
+    - htop
+    - vis
+    - task
+    - gitconfig
+    - bin-scripts.linux
     - development-tools.osx
 

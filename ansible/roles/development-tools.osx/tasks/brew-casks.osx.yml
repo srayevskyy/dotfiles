@@ -4,6 +4,7 @@
     state: present
   with_items:
     - iterm2
+    - docker
     - flux
     - firefox
     - google-chrome
