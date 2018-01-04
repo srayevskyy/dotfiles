@@ -21,3 +21,19 @@
     - intellij-idea
     - razorsql
   when: ansible_system == 'Darwin'
+
+- name: install Virtualbox extension pack
+  shell: |
+    ( 
+      cd /tmp; 
+      vbox_full_version=$(brew cask info virtualbox | head -1 | cut -d' ' -f2); 
+      vbox_short_version=${vbox_full_version/-*}; 
+      curl -L -O http://download.virtualbox.org/virtualbox/${vbox_short_version}/Oracle_VM_VirtualBox_Extension_Pack-${vbox_full_version}.vbox-extpack; 
+      echo y | sudo VBoxManage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-${vbox_full_version}.vbox-extpack; 
+      rm *.vbox-extpack; 
+    )
+  register: extpack_output
+
+#- debug:
+#    var: extpack_output
+
