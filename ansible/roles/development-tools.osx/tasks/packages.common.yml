@@ -5,6 +5,7 @@
   with_items:
     - mc
     - wget
+    - bash-completion
     - docker
     - docker-compose
     - docker-machine

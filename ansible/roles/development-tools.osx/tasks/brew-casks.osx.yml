@@ -13,6 +13,7 @@
     - avira-antivirus
     - gpg-suite
     - java8
+    - google-cloud-sdk
     - sublime-text
     - vagrant
     - virtualbox
